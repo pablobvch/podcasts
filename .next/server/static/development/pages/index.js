@@ -102,30 +102,74 @@ module.exports =
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-jsx/style */ "styled-jsx/style");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "C:\\git-projects\\podcasts\\pages\\index.js";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-/* harmony default export */ __webpack_exports__["default"] = (() => __jsx("div", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 2
-  },
-  __self: undefined
-}, __jsx("h1", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 3
-  },
-  __self: undefined
-}, "Hello World!"), __jsx("p", {
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+const renderChannel = channel => __jsx("a", {
+  className: "channel",
+  key: channel.id,
   __source: {
     fileName: _jsxFileName,
     lineNumber: 4
   },
   __self: undefined
-}, "Using NextJS")));
+}, __jsx("h2", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 5
+  },
+  __self: undefined
+}, channel.title));
+
+const renderChannels = ({
+  channels
+}) => __jsx("div", {
+  className: "channels",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 10
+  },
+  __self: undefined
+}, channels.map(channel => renderChannel(channel)));
+
+const Page = props => __jsx("div", {
+  className: "jsx-49661473",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 16
+  },
+  __self: undefined
+}, __jsx("header", {
+  className: "jsx-49661473",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 17
+  },
+  __self: undefined
+}, "Podcasts"), renderChannels(props), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+  id: "2475005419",
+  __self: undefined
+}, "header.jsx-49661473{color:#fff;background:#8756ca;padding:15px;text-align:center;}.channels.jsx-49661473{display:grid;grid-gap:15px;padding:15px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}a.channel.jsx-49661473{display:block;margin-bottom:0.5em;color:#333;-webkit-text-decoration:none;text-decoration:none;}.channel.jsx-49661473 img.jsx-49661473{border-radius:3px;box-shadow:0px 2px 6px rgba(0,0,0,0.15);width:100%;}h2.jsx-49661473{padding:5px;font-size:0.9em;font-weight:600;margin:0;text-align:center;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxnaXQtcHJvamVjdHNcXHBvZGNhc3RzXFxwYWdlc1xcaW5kZXguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBa0JnQixBQUdvQixBQU1FLEFBTUMsQUFNSSxBQUtOLFdBdEJPLENBdUJILENBakJGLENBTU0sSUFNdUIsU0FYOUIsQ0FpQkcsRUF2QkgsSUFZRixNQUxpRCxHQU4xQyxDQXVCVCxDQVhZLFFBWUgsS0FQUCxHQWhCYixRQWlCQSxFQU9BLHdCQVpBLEdBTkEiLCJmaWxlIjoiQzpcXGdpdC1wcm9qZWN0c1xccG9kY2FzdHNcXHBhZ2VzXFxpbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBcImlzb21vcnBoaWMtZmV0Y2hcIjtcclxuXHJcbmNvbnN0IHJlbmRlckNoYW5uZWwgPSBjaGFubmVsID0+IChcclxuICA8YSBjbGFzc05hbWU9XCJjaGFubmVsXCIga2V5PXtjaGFubmVsLmlkfT5cclxuICAgIDxoMj57Y2hhbm5lbC50aXRsZX08L2gyPlxyXG4gIDwvYT5cclxuKTtcclxuXHJcbmNvbnN0IHJlbmRlckNoYW5uZWxzID0gKHsgY2hhbm5lbHMgfSkgPT4gKFxyXG4gIDxkaXYgY2xhc3NOYW1lPVwiY2hhbm5lbHNcIj5cclxuICAgIHtjaGFubmVscy5tYXAoY2hhbm5lbCA9PiByZW5kZXJDaGFubmVsKGNoYW5uZWwpKX1cclxuICA8L2Rpdj5cclxuKTtcclxuXHJcbmNvbnN0IFBhZ2UgPSBwcm9wcyA9PiAoXHJcbiAgPGRpdj5cclxuICAgIDxoZWFkZXI+UG9kY2FzdHM8L2hlYWRlcj5cclxuICAgIHtyZW5kZXJDaGFubmVscyhwcm9wcyl9XHJcbiAgICA8c3R5bGUganN4PntgXHJcbiAgICAgIGhlYWRlciB7XHJcbiAgICAgICAgY29sb3I6ICNmZmY7XHJcbiAgICAgICAgYmFja2dyb3VuZDogIzg3NTZjYTtcclxuICAgICAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgICAgfVxyXG4gICAgICAuY2hhbm5lbHMge1xyXG4gICAgICAgIGRpc3BsYXk6IGdyaWQ7XHJcbiAgICAgICAgZ3JpZC1nYXA6IDE1cHg7XHJcbiAgICAgICAgcGFkZGluZzogMTVweDtcclxuICAgICAgICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdChhdXRvLWZpbGwsIG1pbm1heCgxNjBweCwgMWZyKSk7XHJcbiAgICAgIH1cclxuICAgICAgYS5jaGFubmVsIHtcclxuICAgICAgICBkaXNwbGF5OiBibG9jaztcclxuICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjVlbTtcclxuICAgICAgICBjb2xvcjogIzMzMztcclxuICAgICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbiAgICAgIH1cclxuICAgICAgLmNoYW5uZWwgaW1nIHtcclxuICAgICAgICBib3JkZXItcmFkaXVzOiAzcHg7XHJcbiAgICAgICAgYm94LXNoYWRvdzogMHB4IDJweCA2cHggcmdiYSgwLCAwLCAwLCAwLjE1KTtcclxuICAgICAgICB3aWR0aDogMTAwJTtcclxuICAgICAgfVxyXG4gICAgICBoMiB7XHJcbiAgICAgICAgcGFkZGluZzogNXB4O1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMC45ZW07XHJcbiAgICAgICAgZm9udC13ZWlnaHQ6IDYwMDtcclxuICAgICAgICBtYXJnaW46IDA7XHJcbiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgICB9XHJcbiAgICBgfTwvc3R5bGU+XHJcblxyXG4gICAgPHN0eWxlIGpzeCBnbG9iYWw+XHJcbiAgICAgIHtgXHJcbiAgICAgICAgYm9keSB7XHJcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB3aGl0ZTtcclxuICAgICAgICAgIGZvbnQtZmFtaWx5OiBzeXN0ZW0tdWk7XHJcbiAgICAgICAgICBtYXJnaW46IDA7XHJcbiAgICAgICAgfVxyXG4gICAgICBgfVxyXG4gICAgPC9zdHlsZT5cclxuICA8L2Rpdj5cclxuKTtcclxuXHJcbmNvbnN0IHJlbmFtZUJvZHl0b0NoYW5uZWxzID0gYm9keSA9PiAoeyBjaGFubmVsczogYm9keSB9KTtcclxuXHJcblBhZ2UuZ2V0SW5pdGlhbFByb3BzID0gKCkgPT5cclxuICBmZXRjaChcImh0dHBzOi8vYXBpLmF1ZGlvYm9vbS5jb20vY2hhbm5lbHMvcmVjb21tZW5kZWRcIilcclxuICAgIC50aGVuKHJlc3BvbnNlID0+IHJlc3BvbnNlLmpzb24oKSlcclxuICAgIC50aGVuKHJlc3BvbnNlID0+IHJlbmFtZUJvZHl0b0NoYW5uZWxzKHJlc3BvbnNlLmJvZHkpKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IFBhZ2U7XHJcbiJdfQ== */\n/*@ sourceURL=C:\\\\git-projects\\\\podcasts\\\\pages\\\\index.js */"), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+  id: "2426845187",
+  __self: undefined
+}, "body{background:white;font-family:system-ui;margin:0;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxnaXQtcHJvamVjdHNcXHBvZGNhc3RzXFxwYWdlc1xcaW5kZXguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBb0RPLEFBRzRCLGlCQUNLLHNCQUNiLFNBQ1giLCJmaWxlIjoiQzpcXGdpdC1wcm9qZWN0c1xccG9kY2FzdHNcXHBhZ2VzXFxpbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBcImlzb21vcnBoaWMtZmV0Y2hcIjtcclxuXHJcbmNvbnN0IHJlbmRlckNoYW5uZWwgPSBjaGFubmVsID0+IChcclxuICA8YSBjbGFzc05hbWU9XCJjaGFubmVsXCIga2V5PXtjaGFubmVsLmlkfT5cclxuICAgIDxoMj57Y2hhbm5lbC50aXRsZX08L2gyPlxyXG4gIDwvYT5cclxuKTtcclxuXHJcbmNvbnN0IHJlbmRlckNoYW5uZWxzID0gKHsgY2hhbm5lbHMgfSkgPT4gKFxyXG4gIDxkaXYgY2xhc3NOYW1lPVwiY2hhbm5lbHNcIj5cclxuICAgIHtjaGFubmVscy5tYXAoY2hhbm5lbCA9PiByZW5kZXJDaGFubmVsKGNoYW5uZWwpKX1cclxuICA8L2Rpdj5cclxuKTtcclxuXHJcbmNvbnN0IFBhZ2UgPSBwcm9wcyA9PiAoXHJcbiAgPGRpdj5cclxuICAgIDxoZWFkZXI+UG9kY2FzdHM8L2hlYWRlcj5cclxuICAgIHtyZW5kZXJDaGFubmVscyhwcm9wcyl9XHJcbiAgICA8c3R5bGUganN4PntgXHJcbiAgICAgIGhlYWRlciB7XHJcbiAgICAgICAgY29sb3I6ICNmZmY7XHJcbiAgICAgICAgYmFja2dyb3VuZDogIzg3NTZjYTtcclxuICAgICAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgICAgfVxyXG4gICAgICAuY2hhbm5lbHMge1xyXG4gICAgICAgIGRpc3BsYXk6IGdyaWQ7XHJcbiAgICAgICAgZ3JpZC1nYXA6IDE1cHg7XHJcbiAgICAgICAgcGFkZGluZzogMTVweDtcclxuICAgICAgICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdChhdXRvLWZpbGwsIG1pbm1heCgxNjBweCwgMWZyKSk7XHJcbiAgICAgIH1cclxuICAgICAgYS5jaGFubmVsIHtcclxuICAgICAgICBkaXNwbGF5OiBibG9jaztcclxuICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjVlbTtcclxuICAgICAgICBjb2xvcjogIzMzMztcclxuICAgICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbiAgICAgIH1cclxuICAgICAgLmNoYW5uZWwgaW1nIHtcclxuICAgICAgICBib3JkZXItcmFkaXVzOiAzcHg7XHJcbiAgICAgICAgYm94LXNoYWRvdzogMHB4IDJweCA2cHggcmdiYSgwLCAwLCAwLCAwLjE1KTtcclxuICAgICAgICB3aWR0aDogMTAwJTtcclxuICAgICAgfVxyXG4gICAgICBoMiB7XHJcbiAgICAgICAgcGFkZGluZzogNXB4O1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMC45ZW07XHJcbiAgICAgICAgZm9udC13ZWlnaHQ6IDYwMDtcclxuICAgICAgICBtYXJnaW46IDA7XHJcbiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgICB9XHJcbiAgICBgfTwvc3R5bGU+XHJcblxyXG4gICAgPHN0eWxlIGpzeCBnbG9iYWw+XHJcbiAgICAgIHtgXHJcbiAgICAgICAgYm9keSB7XHJcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB3aGl0ZTtcclxuICAgICAgICAgIGZvbnQtZmFtaWx5OiBzeXN0ZW0tdWk7XHJcbiAgICAgICAgICBtYXJnaW46IDA7XHJcbiAgICAgICAgfVxyXG4gICAgICBgfVxyXG4gICAgPC9zdHlsZT5cclxuICA8L2Rpdj5cclxuKTtcclxuXHJcbmNvbnN0IHJlbmFtZUJvZHl0b0NoYW5uZWxzID0gYm9keSA9PiAoeyBjaGFubmVsczogYm9keSB9KTtcclxuXHJcblBhZ2UuZ2V0SW5pdGlhbFByb3BzID0gKCkgPT5cclxuICBmZXRjaChcImh0dHBzOi8vYXBpLmF1ZGlvYm9vbS5jb20vY2hhbm5lbHMvcmVjb21tZW5kZWRcIilcclxuICAgIC50aGVuKHJlc3BvbnNlID0+IHJlc3BvbnNlLmpzb24oKSlcclxuICAgIC50aGVuKHJlc3BvbnNlID0+IHJlbmFtZUJvZHl0b0NoYW5uZWxzKHJlc3BvbnNlLmJvZHkpKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IFBhZ2U7XHJcbiJdfQ== */\n/*@ sourceURL=C:\\\\git-projects\\\\podcasts\\\\pages\\\\index.js */"));
+
+const renameBodytoChannels = body => ({
+  channels: body
+});
+
+Page.getInitialProps = () => fetch("https://api.audioboom.com/channels/recommended").then(response => response.json()).then(response => renameBodytoChannels(response.body));
+
+/* harmony default export */ __webpack_exports__["default"] = (Page);
 
 /***/ }),
 
@@ -141,6 +185,17 @@ module.exports = __webpack_require__(/*! C:\git-projects\podcasts\pages\index.js
 
 /***/ }),
 
+/***/ "isomorphic-fetch":
+/*!***********************************!*\
+  !*** external "isomorphic-fetch" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("isomorphic-fetch");
+
+/***/ }),
+
 /***/ "react":
 /*!************************!*\
   !*** external "react" ***!
@@ -149,6 +204,17 @@ module.exports = __webpack_require__(/*! C:\git-projects\podcasts\pages\index.js
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "styled-jsx/style":
+/*!***********************************!*\
+  !*** external "styled-jsx/style" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("styled-jsx/style");
 
 /***/ })
 
