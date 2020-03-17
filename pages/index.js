@@ -1,15 +1,19 @@
 import "isomorphic-fetch";
+import Link from "next/link";
 
 const renderChannel = channel => (
   <a className="channel" key={channel.id}>
+    <img src={channel.urls.logo_image.original} alt="" />
     <h2>{channel.title}</h2>
   </a>
 );
 
 const renderChannels = ({ channels }) => (
-  <div className="channels">
-    {channels.map(channel => renderChannel(channel))}
-  </div>
+  <Link href="/channel" prefetch>
+    <a className="channels">
+      {channels.map(channel => renderChannel(channel))}
+    </a>
+  </Link>
 );
 
 const Page = props => (
