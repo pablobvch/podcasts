@@ -2,18 +2,18 @@ import "isomorphic-fetch";
 import Link from "next/link";
 
 const renderChannel = channel => (
-  <a className="channel" key={channel.id}>
-    <img src={channel.urls.logo_image.original} alt="" />
-    <h2>{channel.title}</h2>
-  </a>
+  <Link href={`/channel?id=${channel.id}`} key={channel.id}>
+    <a className="channel">
+      <img src={channel.urls.logo_image.original} alt="" />
+      <h2>{channel.title}</h2>
+    </a>
+  </Link>
 );
 
 const renderChannels = ({ channels }) => (
-  <Link href="/channel" prefetch>
-    <a className="channels">
-      {channels.map(channel => renderChannel(channel))}
-    </a>
-  </Link>
+  <div className="channels">
+    {channels.map(channel => renderChannel(channel))}
+  </div>
 );
 
 const Page = props => (
@@ -53,15 +53,13 @@ const Page = props => (
       }
     `}</style>
 
-    <style jsx global>
-      {`
-        body {
-          background: white;
-          font-family: system-ui;
-          margin: 0;
-        }
-      `}
-    </style>
+    <style jsx global>{`
+      body {
+        margin: 0;
+        font-family: system-ui;
+        background: white;
+      }
+    `}</style>
   </div>
 );
 
