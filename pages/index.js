@@ -1,73 +1,35 @@
 import "isomorphic-fetch";
-import Link from "next/link";
+import Error from "next/error";
 
-const renderChannel = channel => (
-  <Link href={`/channel?id=${channel.id}`} key={channel.id}>
-    <a className="channel">
-      <img src={channel.urls.logo_image.original} alt="" />
-      <h2>{channel.title}</h2>
-    </a>
-  </Link>
+import ChannelGrid from "../components/ChannelGrid";
+import Layout from "../components/Layout";
+
+const renderErrorMessage = (statusCode) => <Error statusCode={503} />;
+
+const renderPage = (channels) => (
+  <Layout title="Podcasts">
+    <ChannelGrid channels={channels} />
+  </Layout>
 );
 
-const renderChannels = ({ channels }) => (
-  <div className="channels">
-    {channels.map(channel => renderChannel(channel))}
-  </div>
-);
+const shouldRenderPage = (statusCode) => statusCode === 200;
 
-const Page = props => (
-  <div>
-    <header>Podcasts</header>
-    {renderChannels(props)}
-    <style jsx>{`
-      header {
-        color: #fff;
-        background: #8756ca;
-        padding: 15px;
-        text-align: center;
-      }
-      .channels {
-        display: grid;
-        grid-gap: 15px;
-        padding: 15px;
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      }
-      a.channel {
-        display: block;
-        margin-bottom: 0.5em;
-        color: #333;
-        text-decoration: none;
-      }
-      .channel img {
-        border-radius: 3px;
-        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
-        width: 100%;
-      }
-      h2 {
-        padding: 5px;
-        font-size: 0.9em;
-        font-weight: 600;
-        margin: 0;
-        text-align: center;
-      }
-    `}</style>
+const Page = ({ channels, statusCode }) =>
+  shouldRenderPage(statusCode)
+    ? renderPage(channels)
+    : renderErrorMessage(statusCode);
 
-    <style jsx global>{`
-      body {
-        margin: 0;
-        font-family: system-ui;
-        background: white;
-      }
-    `}</style>
-  </div>
-);
+const getResponseWithError = () => ({
+  channels: null,
+  statusCode: 503,
+});
 
-const renameBodytoChannels = body => ({ channels: body });
+const renameBodytoChannels = (body) => ({ channels: body, statusCode: 200 });
 
 Page.getInitialProps = () =>
   fetch("https://api.audioboom.com/channels/recommended")
-    .then(response => response.json())
-    .then(response => renameBodytoChannels(response.body));
+    .then((response) => response.json())
+    .then((response) => renameBodytoChannels(response.body))
+    .catch((e) => getResponseWithError());
 
 export default Page;
