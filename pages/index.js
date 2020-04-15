@@ -1,5 +1,5 @@
 import "isomorphic-fetch";
-import Error from "next/error";
+import Error from "./_Error";
 
 import ChannelGrid from "../components/ChannelGrid";
 import Layout from "../components/Layout";

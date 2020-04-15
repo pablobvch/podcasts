@@ -1,5 +1,6 @@
 import "isomorphic-fetch";
-import Error from "next/error";
+import Link from "next/link";
+import Error from "./_Error";
 
 const renderErrorMessage = (statusCode) => <Error statusCode={statusCode} />;
 
@@ -9,7 +10,12 @@ const renderChannel = (channel, audioClips, childChannels) => (
     <h1>{channel.title}</h1>
     <h2>Child Channels</h2>
     {childChannels.map((childChannel) => (
-      <div key={`childChannel${childChannel.id}`}>{childChannel.title}</div>
+      <Link href={`/channel?id=${childChannel.id}`}>
+        <a className="channel">
+          <img src={childChannel.urls.logo_image.original} alt="" />
+          <h2>{childChannel.title}</h2>
+        </a>
+      </Link>
     ))}
     <h2>Audio Clips</h2>
     {audioClips.map((audioClip) => (
