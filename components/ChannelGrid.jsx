@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { Link } from "../routes";
+import slug from "../utils/slug";
 
 const renderH2 = (channel) => (
   <h2>
@@ -44,7 +45,13 @@ const renderA = (channel) => (
 );
 
 const renderLink = (channel) => (
-  <Link href={`/channel?id=${channel.id}`} key={channel.id}>
+  <Link
+    route="channel"
+    params={{
+      slug: slug(channel.title),
+      id: channel.id
+    }}
+  >
     {renderA(channel)}
   </Link>
 );

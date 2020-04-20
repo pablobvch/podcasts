@@ -1,4 +1,4 @@
-export default () => (
+const About = () => (
   <div>
     <h1>About Me!</h1>
 
@@ -31,3 +31,5 @@ export default () => (
     </style>
   </div>
 );
+
+export default About;

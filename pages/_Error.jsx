@@ -17,9 +17,6 @@ const renderTryAgainMessage = () => (
       h1 {
         margin-bottom: 2em;
       }
-      a {
-        color: #8756ca;
-      }
     `}</style>
   </div>
 );
@@ -59,28 +56,7 @@ const Error = ({ statusCode }) => (
   </Layout>
 );
 
-/*<Layout title="Oh no :(">
-    {statusCode === 404 ? (
-      <div className="message">
-        <h1>Page not found :(</h1>
-        <p>
-          <Link route="home">
-            <a>back to home</a>
-          </Link>
-        </p>
-      </div>
-    ) : (
-      <div className="message">
-        <h1>It w as a problem :(</h1>
-        <p>Try againt in a few seconds</p>
-      </div>
-    )}
-    
-  </Layout> */
-
-Error.getInitialProps = ({ res, err }) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : null;
-  return { statusCode };
-};
+Error.getInitialProps = ({ res, err }) =>
+  res ? res.statusCode : err ? err.statusCode : null;
 
 export default Error;
